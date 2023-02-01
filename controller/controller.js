@@ -1,6 +1,15 @@
 const express = require("express");
 const Url = require("../model/model");
 
+exports.getUrl = async (req, res) => {
+  try {
+    const urls = await Url.find();
+    res.send(urls);
+  } catch (error) {
+    res.status(404).send({message: error.message});
+  }
+}
+
 exports.getUser = async (req, res) => {
   try {
     const user = await Url.find();
